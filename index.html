@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #fff0f5 0%, #fff8e7 50%, #f0f8ff 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .container {
+    text-align: center;
+    padding: 30px 20px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .balloon {
+    position: absolute;
+    width: 48px;
+    height: 58px;
+    border-radius: 50%;
+    animation: floatBalloon 4s ease-in-out infinite;
+    opacity: 0.85;
+  }
+  .balloon::after {
+    content: '';
+    display: block;
+    width: 1.5px;
+    height: 38px;
+    background: #bbb;
+    margin: 0 auto;
+  }
+  .b1 { background: #ff8fab; left: 4%; top: 8%; animation-delay: 0s; }
+  .b2 { background: #ffd166; left: 13%; top: 4%; animation-delay: 0.5s; }
+  .b3 { background: #a0e4cb; left: 80%; top: 6%; animation-delay: 1s; }
+  .b4 { background: #c77dff; left: 91%; top: 14%; animation-delay: 1.5s; }
+  .b5 { background: #ff9a3c; left: 2%; top: 48%; animation-delay: 2s; }
+  .b6 { background: #4cc9f0; left: 93%; top: 48%; animation-delay: 0.7s; }
+  .b7 { background: #f72585; left: 18%; top: 82%; animation-delay: 1.2s; }
+  .b8 { background: #7bed9f; left: 76%; top: 78%; animation-delay: 0.3s; }
+
+  @keyframes floatBalloon {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-14px) rotate(3deg); }
+  }
+
+  .stars { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; }
+  .star {
+    position: absolute;
+    animation: twinkle 2s ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.25; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.35); }
+  }
+
+  .title-wrapper {
+    margin: 55px auto 8px;
+    position: relative;
+    z-index: 2;
+  }
+  .happy-text {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(26px, 6vw, 48px);
+    color: #f72585;
+    text-shadow: 3px 3px 0px #ffb3c6;
+    display: block;
+    animation: bounceIn 0.8s ease-out both;
+  }
+  .birthday-text {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(30px, 7vw, 56px);
+    background: linear-gradient(45deg, #f72585, #b5179e, #7209b7, #4361ee, #4cc9f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    animation: bounceIn 0.8s ease-out 0.2s both;
+  }
+  @keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    60% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .name-badge {
+    display: inline-block;
+    margin: 14px auto;
+    padding: 11px 38px;
+    background: linear-gradient(135deg, #f72585, #b5179e);
+    border-radius: 50px;
+    box-shadow: 0 6px 20px rgba(247,37,133,0.35);
+    animation: bounceIn 0.8s ease-out 0.4s both;
+    position: relative;
+    z-index: 2;
+  }
+  .name-badge span {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(24px, 5vw, 38px);
+    color: white;
+    letter-spacing: 3px;
+  }
+
+  .cake-wrapper {
+    margin: 18px auto;
+    position: relative;
+    z-index: 2;
+    animation: bounceIn 0.8s ease-out 0.6s both;
+  }
+  .cake-emoji {
+    font-size: 75px;
+    display: inline-block;
+    animation: wiggle 1.5s ease-in-out infinite;
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-5deg) scale(1); }
+    50% { transform: rotate(5deg) scale(1.08); }
+  }
+
+  /* Message card utama */
+  .message-card {
+    max-width: 500px;
+    margin: 18px auto 10px;
+    padding: 26px 28px;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(247,37,133,0.12), 0 2px 8px rgba(0,0,0,0.06);
+    border: 2px solid #ffe0ec;
+    position: relative;
+    z-index: 2;
+    animation: bounceIn 0.8s ease-out 0.8s both;
+    text-align: left;
+  }
+
+  .msg-header {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .msg-header .emoji-row {
+    font-size: 28px;
+    letter-spacing: 6px;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .msg-header .title {
+    font-family: 'Pacifico', cursive;
+    font-size: 20px;
+    color: #f72585;
+  }
+
+  .msg-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffb3c6, #c77dff, #4cc9f0, transparent);
+    border-radius: 2px;
+    margin: 14px 0;
+  }
+
+  .msg-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px dashed #ffe0ec;
+  }
+  .msg-row:last-child { border-bottom: none; }
+
+  .msg-icon {
+    font-size: 26px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .msg-text {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.75;
+    font-weight: 600;
+  }
+  .msg-text .highlight {
+    color: #f72585;
+    font-weight: 800;
+  }
+  .msg-text .purple {
+    color: #7209b7;
+    font-weight: 800;
+  }
+  .msg-text .blue {
+    color: #4361ee;
+    font-weight: 800;
+  }
+
+  .closing-card {
+    max-width: 500px;
+    margin: 14px auto;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #f72585, #7209b7);
+    border-radius: 20px;
+    box-shadow: 0 8px 28px rgba(114,9,183,0.3);
+    position: relative;
+    z-index: 2;
+    animation: bounceIn 0.8s ease-out 1s both;
+    text-align: center;
+  }
+  .closing-card p {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(14px, 3.5vw, 20px);
+    color: white;
+    line-height: 1.9;
+    letter-spacing: 0.5px;
+  }
+
+  .celebrate-btn {
+    display: inline-block;
+    margin: 22px auto 10px;
+    padding: 14px 36px;
+    background: linear-gradient(135deg, #f72585, #7209b7);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 800;
+    font-family: 'Nunito', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(114,9,183,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    z-index: 2;
+    animation: bounceIn 0.8s ease-out 1.2s both;
+  }
+  .celebrate-btn:hover { transform: scale(1.06) translateY(-2px); box-shadow: 0 10px 28px rgba(114,9,183,0.45); }
+  .celebrate-btn:active { transform: scale(0.97); }
+
+  .hearts-row {
+    margin-top: 18px;
+    font-size: 22px;
+    position: relative;
+    z-index: 2;
+    animation: bounceIn 0.8s ease-out 1.4s both;
+    letter-spacing: 6px;
+  }
+
+  .confetti-piece {
+    position: absolute;
+    border-radius: 2px;
+    animation: confettiFall linear infinite;
+    z-index: 1;
+  }
+  @keyframes confettiFall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="container" id="main">
+
+  <div class="balloon b1"></div>
+  <div class="balloon b2"></div>
+  <div class="balloon b3"></div>
+  <div class="balloon b4"></div>
+  <div class="balloon b5"></div>
+  <div class="balloon b6"></div>
+  <div class="balloon b7"></div>
+  <div class="balloon b8"></div>
+
+  <div class="stars" id="stars"></div>
+
+  <div class="title-wrapper">
+    <span class="happy-text">Happy</span>
+    <span class="birthday-text">Birthday!</span>
+  </div>
+
+  <div class="name-badge">
+    <span>Syaa 🌸</span>
+  </div>
+
+  <div class="cake-wrapper">
+    <span class="cake-emoji">🎂</span>
+  </div>
+
+  <div class="message-card">
+    <div class="msg-header">
+      <span class="emoji-row">🎉 🎈 🎊 🎁 🎈 🎉</span>
+      <span class="title">Untuk Syaa Tercinta</span>
+    </div>
+    <div class="msg-divider"></div>
+
+    <div class="msg-row">
+      <span class="msg-icon">🥳</span>
+      <p class="msg-text"><span class="highlight">Happy Birthday Syaa!</span> Selamat ulang tahun ya, semoga hari ini jadi hari yang paling spesial buat kamu!</p>
+    </div>
+
+    <div class="msg-row">
+      <span class="msg-icon">🌿</span>
+      <p class="msg-text">Semoga kamu selalu <span class="highlight">panjang umur</span> dan <span class="highlight">sehat selalu</span> ya — karena kamu masih punya banyak hal indah yang menanti!</p>
+    </div>
+
+    <div class="msg-row">
+      <span class="msg-icon">⭐</span>
+      <p class="msg-text">Semoga semua yang kamu <span class="purple">inginkan dan impikan</span> bisa tercapai satu per satu, pelan-pelan tapi pasti!</p>
+    </div>
+
+    <div class="msg-row">
+      <span class="msg-icon">🛤️</span>
+      <p class="msg-text">Semoga <span class="blue">segala urusannya dilancarkan</span> — setiap langkah yang kamu ambil selalu dimudahkan.</p>
+    </div>
+
+    <div class="msg-row">
+      <span class="msg-icon">☀️</span>
+      <p class="msg-text"><span class="highlight">Jangan sedih lagi ya</span> — tahun ini harus ceria, harus semangat, harus bahagia! Senyum kamu itu indah banget! 😊</p>
+    </div>
+
+    <div class="msg-row">
+      <span class="msg-icon">💪</span>
+      <p class="msg-text">Kamu udah <span class="purple">hebat banget</span> bisa sampai di tahap ini. Nggak semua orang kuat kayak kamu!</p>
+    </div>
+
+    <div class="msg-row">
+      <span class="msg-icon">🏆</span>
+      <p class="msg-text">Dan kamu juga udah <span class="highlight">hebat banget bisa melewati semua itu</span> — setiap rintangan yang datang, kamu hadapi dengan luar biasa!</p>
+    </div>
+
+    <div class="msg-row">
+      <span class="msg-icon">🦋</span>
+      <p class="msg-text"><span class="blue">Jadilah diri kamu sendiri</span> ya — karena versi terbaik dari kamu adalah kamu yang asli. Jangan pernah berubah jadi orang lain!</p>
+    </div>
+
+    <div class="msg-row">
+      <span class="msg-icon">📚</span>
+      <p class="msg-text"><span class="purple">Semangat untuk semester ini</span> dan ke depannya! Setiap hari baru adalah kesempatan buat kamu berkembang.</p>
+    </div>
+
+    <div class="msg-row">
+      <span class="msg-icon">💖</span>
+      <p class="msg-text"><span class="highlight">Aku tau kamu bisa!</span> Percaya deh sama kemampuan kamu sendiri — kamu lebih kuat dari yang kamu kira! You've got this, Syaa! 🌟</p>
+    </div>
+  </div>
+
+  <div class="closing-card">
+    <p>🌸 Selamat ulang tahun, Syaa! 🌸<br>
+    Semoga selalu bahagia & bersinar ✨<br>
+    We're rooting for you! 💖</p>
+  </div>
+
+  <button class="celebrate-btn" onclick="launchConfetti()">🎉 Rayakan! 🎉</button>
+
+  <div class="hearts-row">💖 💜 💛 💚 💙</div>
+</div>
+
+<script>
+  const starsEl = document.getElementById('stars');
+  const starChars = ['✦','✧','⭐','🌟','✨','💫'];
+  for (let i = 0; i < 14; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.textContent = starChars[Math.floor(Math.random() * starChars.length)];
+    s.style.left = Math.random() * 90 + 5 + '%';
+    s.style.top = Math.random() * 90 + 5 + '%';
+    s.style.animationDelay = (Math.random() * 2) + 's';
+    s.style.fontSize = (12 + Math.random() * 14) + 'px';
+    starsEl.appendChild(s);
+  }
+
+  const colors = ['#f72585','#b5179e','#7209b7','#4361ee','#4cc9f0','#ffd166','#ff9a3c','#7bed9f','#ff8fab','#c77dff'];
+  let confettiActive = false;
+
+  function launchConfetti() {
+    if (confettiActive) return;
+    confettiActive = true;
+    const container = document.getElementById('main');
+    const pieces = [];
+    for (let i = 0; i < 80; i++) {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random() * 100 + '%';
+      piece.style.top = '-20px';
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.width = (6 + Math.random() * 10) + 'px';
+      piece.style.height = (6 + Math.random() * 10) + 'px';
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      const dur = 2.5 + Math.random() * 2;
+      piece.style.animationDuration = dur + 's';
+      piece.style.animationDelay = (Math.random() * 1.5) + 's';
+      container.appendChild(piece);
+      pieces.push(piece);
+    }
+    setTimeout(() => {
+      pieces.forEach(p => p.remove());
+      confettiActive = false;
+    }, 5500);
+  }
+
+  setTimeout(launchConfetti, 1000);
+</script>
+</body>
+</html>
